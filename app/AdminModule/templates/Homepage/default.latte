@@ -1,0 +1,34 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+<div id="page">
+
+<h1>Danube: Law and Economics Review</h1>
+
+<h2>Hlavní menu:</h2>
+<p><a href="{$basePath}/admin/pridat-kategorii/">Přidat kategorii</a></p>
+<p><a href="{$basePath}/admin/pridat-nove-cislo-casopisu/">Přidat nové číslo časopisu</a></p>
+<p><a href="{$basePath}/admin/pridat-clanek/">Přidat článek</a></p>
+
+
+</div>	<!-- /page -->
+
+{/block}
+
+{block scripts}
+{include #parent}
+<script src="http://jush.sourceforge.net/jush.js"></script>
+<script>
+	jush.create_links = false;
+	jush.highlight_tag('code');
+	$('code.jush').each(function(){ $(this).html($(this).html().replace(/\x7B[/$\w].*?\}/g, '<span class="jush-latte">$&</span>')) });
+
+	$('a[href^=#]').click(function(){
+		$('html,body').animate({ scrollTop: $($(this).attr('href')).show().offset().top - 5 }, 'fast');
+		return false;
+	});
+</script>
+{/block}
+
+

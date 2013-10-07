@@ -1,0 +1,234 @@
+@CHARSET "UTF-8";
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 80% Verdana, Arial, Helvetica, sans-serif;
+	background: rgb(95%,95%,80%);
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-size: 200%;
+	text-transform: Uppercase;
+	letter-spacing: 3px;
+	margin: 0px;
+	padding-top: 25px;	
+	padding-bottom: 25px;
+	text-align: center;
+	background: rgb(85%,85%,70%);
+	color: black;
+}
+
+h1.master {
+	width: 950px;
+	font-size: 100%;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+h2 {
+	font-size: 1.33em;
+	margin: 0;
+	padding: 0px;
+	border-bottom: 1px solid black;
+}
+
+h4 {
+	font-size: 1em;
+	margin: 0;
+	padding: 0.33em 0 0;
+	border-bottom: 1px solid rgb(50%,50%,35%);
+}
+
+h1, h3, h4 {
+	line-height: 1em;
+}
+
+p {
+	line-height: 1.5;
+	margin: 0.5em 0 1em;
+}
+
+a img {
+	border: 0;	/* because of 'text-decoration' in IE */
+}
+
+
+/* BEGIN page sections */
+
+div#wrapper {
+	min-height: 1000px;
+	width: 1150px;
+	margin: 0 auto;
+}
+
+div#header {
+	
+}
+
+#header a {
+	text-decoration: none;
+}
+
+#header a:link {
+	color: black;
+}
+
+#header a:visited {
+	color: black;
+}
+
+#footer a {
+	text-decoration: none;
+}
+
+#footer a:link {
+	color: black;
+}
+
+#footer a:visited {
+	color: black;
+}
+
+div#sidebar {
+	float: left;
+	width: 170px;
+	padding-top: 10px;
+	padding-bottom: 15px;
+	padding-right: 6px; 											/* arrow position*/
+	background: url(../images/arrow.gif) no-repeat right bottom;
+}
+
+div#mainpage{
+	width: 960px;
+	min-height: 800px;
+	margin-left: 190px;
+	padding-top: 17px;
+}
+
+div#footer {
+	clear: both;
+	border-top: 1px solid rgb(85%,85%,70%);
+	color: rgb(20%,40%,0%);
+	margin-top: 20px;
+	padding-left: 20px;
+	font-size: 10px;
+}
+
+/* END page sections */
+
+
+div#rightmenu {
+	padding: 0;
+	padding-bottom: 125px;
+	border-right: 3px double rgb(50%,50%,35%);
+}
+
+
+#sidebar ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 20px; 
+	text-align: right;
+}
+
+#sidebar li {
+	padding: 0.5em 0 0.25em;
+	border-bottom: 1px solid rgb(84%,84%,69%);
+}
+
+#sidebar ul a {
+	text-decoration: none;
+	padding: 0 0.5em 0 0;
+}
+
+#sidebar p a {
+	text-decoration: none;
+}
+
+#sidebar a:link {
+	color: rgb(20%,40%,0%);
+}
+
+#sidebar a:visited {
+	/*color: rgb(58%,68%,40%);*/
+	color: #6c420c;
+}
+
+#sidebar p {
+	text-align: justify;
+	padding-right: 8px;
+	padding-left: 2px;
+	padding-bottom: 20px;
+	font: 11px Arial, Helvetica, sans-serif;
+}
+
+
+#mainpage a {
+	text-decoration: none;
+}
+
+#mainpage a:link {
+	color: rgb(20%,40%,0%);
+}
+
+#mainpage a:visited {
+	color: #6c420c;
+}
+
+#mainpage table {
+	width: 950px;
+}
+
+table {
+	/*width: 950px;*/
+	border-collapse: collapse;
+}
+
+table td, table th {
+	padding: 5px;
+}
+
+td#download {
+	font-size: 10px;	
+}
+
+.odd {
+	background: rgb(95%,95%,90%);
+}
+
+div#top-bar {
+	width: 956px;
+	margin: 0px;
+	text-align: right;
+	padding-bottom: 7px;
+}
+
+#archiv-main-pasive {
+	margin:-5px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	text-decoration: none;
+	background: url(../images/archiv_active.png) no-repeat center center;		
+}
+
+#archiv-main-active {
+	margin: -5px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	text-decoration: none;
+	background: url(../images/archiv_active.png) no-repeat center center;	
+}
+
+

@@ -1,0 +1,42 @@
+{* This is the welcome page, you can delete it *}
+
+{block #title}Články ke stažení{/block}
+
+{block content}
+
+
+<div id="mainpage">
+	<h2>Články ke stažení</h2>
+	<table>
+	<tr><th>Typ</th><th><a href="{link order! 6, $sort}" title="Seřadit podle jména">Autor</a> / <a href="{link order! 2, $sort}" title="Seřadit podle názvu">Název</a></th>
+		<th><a href="{link order! 7, $sort}" title="Seřadit podle kategorie">Kategorie</a></th><th><a href="{link order! 8, $sort}" title="Seřadit podle čísel časopisu">Časopis</a></th></tr>
+	{foreach $articles as $article}
+	<tr n:class="$iterator->isOdd() ? odd : even">
+		<td rowspan="2"><a href="{$basePath}/issue/{$article->file}">
+			<img src="{$basePath}/images/{$article->suffix}.png" height="26px" width="24px" title="{$article->suffix}" /></a></td>
+		<td id="download">{$article->author}</td><td rowspan="2" id="download">{$article->name}</td><td rowspan="2" id="download">{$article->journal}</td></tr>
+	<tr n:class="$iterator->isOdd() ? odd : even">	<td title="{$article->abstract}" id="download">{$article->title}</td></tr>	
+	{/foreach}
+	</table>
+
+</div>	<!-- /mainpage -->
+
+
+{/block}
+
+{block scripts}
+{include #parent}
+<script src="http://jush.sourceforge.net/jush.js"></script>
+<script>
+	jush.create_links = false;
+	jush.highlight_tag('code');
+	$('code.jush').each(function(){ $(this).html($(this).html().replace(/\x7B[/$\w].*?\}/g, '<span class="jush-latte">$&</span>')) });
+
+	$('a[href^=#]').click(function(){
+		$('html,body').animate({ scrollTop: $($(this).attr('href')).show().offset().top - 5 }, 'fast');
+		return false;
+	});
+</script>
+{/block}
+
+

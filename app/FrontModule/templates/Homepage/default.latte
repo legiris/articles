@@ -1,0 +1,54 @@
+{* This is the welcome page, you can delete it *}
+
+{block #title}Aktuální číslo{/block}
+
+{block content}
+
+<div id="mainpage">
+	<h2>Aktuální číslo &#8211; {foreach $journalTitle as $journal}{$journal->title}&nbsp;{$journal->volume}&nbsp;({$journal->year}){/foreach}</h2>
+	
+	{var $countArticles = 0}
+	{var $countDiscussions = 0}
+	{var $countReviews = 0}
+	{foreach $articles as $count}
+		{if $count->name == 'Article'} {var $countArticles = $countArticles + 1} {/if}
+		{if $count->name == 'Discussion'} {var $countDiscussions = $countDiscussions + 1} {/if}
+		{if $count->name == 'Book Review'} {var $countReviews = $countReviews + 1} {/if}
+	{/foreach}
+
+	<table>
+	{var $compareName = 'firstItem'}
+	{foreach $articles as $article}
+	<tr><td colspan="3"><h3>{if $compareName != $article->name}
+								{if $article->name == 'Article' and $countArticles == 1} {$article->name} {/if} 
+								{if $article->name == 'Discussion' and $countDiscussions == 1} {$article->name} {/if} 						
+								{if $article->name == 'Book Review' and $countReviews == 1} {$article->name} {else} {$article->names} {/if}
+							{var $compareName = $article->name} 
+							{/if}</h3></td></tr>
+	<tr n:class="$iterator->isOdd() ? odd : even"><td rowspan="2"><img src="{$basePath}/images/right-arrow.png" height="36px" width="32px" /></td><td>{$article->author}</td>
+		<td rowspan="2"><a href="{$basePath}/issue/{$article->file}"><img src="{$basePath}/images/pdf-icon.png" width="30px" height="32px" /></a></td></tr>
+	<tr n:class="$iterator->isOdd() ? odd : even"><td title="{$article->abstract}">{$article->title}</td></tr>	
+	{/foreach}
+	</table>
+
+</div>	<!-- /mainpage -->
+
+
+{/block}
+
+{block scripts}
+{include #parent}
+<script src="http://jush.sourceforge.net/jush.js"></script>
+<script>
+	jush.create_links = false;
+	jush.highlight_tag('code');
+	$('code.jush').each(function(){ $(this).html($(this).html().replace(/\x7B[/$\w].*?\}/g, '<span class="jush-latte">$&</span>')) });
+
+	$('a[href^=#]').click(function(){
+		$('html,body').animate({ scrollTop: $($(this).attr('href')).show().offset().top - 5 }, 'fast');
+		return false;
+	});
+</script>
+{/block}
+
+

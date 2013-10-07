@@ -1,0 +1,52 @@
+{* This is the welcome page, you can delete it *}
+
+{block #title}Archiv čísel{/block}
+
+{block content}
+
+<div id="mainpage">
+
+<div id="top-bar">
+{foreach $years as $journal}
+	{if $activeYear == $journal->year} 
+		<a href="{$basePath}/archiv/{$journal->year}" id="archiv-main-active">
+	{else}
+		<a href="{$basePath}/archiv/{$journal->year}" id="archiv-main-pasive">
+	{/if}
+	{$journal->year}</a>
+{/foreach}
+</div>	<!-- /top-bar -->	
+
+<table>
+{var $firstItem = 'xxx'}
+{foreach $articles as $article}
+	{var $journalTitle = $article->journalTitle . $article->volume . $article->year}
+	{if $firstItem != $journalTitle} <tr><td colspan="3"><h1 class="master">
+		<a href="{$basePath}/casopis/{$article->year}-{$article->volume}">{$article->journalTitle}:&nbsp;{$article->volume}/{$article->year}</a></h1></td></tr>
+		{var $firstItem = $journalTitle} 
+	{/if}
+	<tr><td>{$article->articleTitle}</td><td>{$article->author}</td><td>{$article->name}</td></tr>
+{/foreach}
+</table>
+
+</div>	<!-- /mainpage -->
+
+
+{/block}
+
+{block scripts}
+{include #parent}
+<script src="http://jush.sourceforge.net/jush.js"></script>
+<script>
+	jush.create_links = false;
+	jush.highlight_tag('code');
+	$('code.jush').each(function(){ $(this).html($(this).html().replace(/\x7B[/$\w].*?\}/g, '<span class="jush-latte">$&</span>')) });
+
+	$('a[href^=#]').click(function(){
+		$('html,body').animate({ scrollTop: $($(this).attr('href')).show().offset().top - 5 }, 'fast');
+		return false;
+	});
+</script>
+{/block}
+
+

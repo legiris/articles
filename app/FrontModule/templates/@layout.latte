@@ -1,0 +1,76 @@
+{**
+ * My Application layout template.
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Danube: Law and Economics Review">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+	<meta name="keywords" content="danube, economic reviews, eaco, European Association Comenius">
+
+	<title>Danube: {include #title}</title>
+	<!-- <title>{*block title|striptags*}Danube: Law and Economics Review{*/block*}</title>-->
+
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
+	<link rel="stylesheet" media="all" href="{$basePath}/css/main.css">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	{block head}{/block}
+</head>
+
+<body>
+<div id="wrapper">
+	<script> document.body.className+=' js' </script>
+
+	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+
+
+<div id="header">
+<h1 title="Danube: Law and Economics Review"><a href="{$basePath}/">Danube: Law and Economics Review</a></h1>
+</div>	<!-- /header -->
+
+<!-- TODO route /casopis/2013-1/ -->
+<div id="sidebar">
+	<h4>Přehled čísel</h4>
+	 <div id="rightmenu">
+		<ul>
+		{foreach $issues as $issue}
+			<li><a href="{$basePath}/casopis/{$issue->year}-{$issue->volume}/">{$issue->journal}</a></li>
+		{/foreach}
+		</ul>
+		<ul>
+			<li><a href="{$basePath}/archiv">Archiv</a></li>
+		</ul>
+		<ul>
+			<li><a href="{$basePath}/clanky-ke-stazeni">Přehled všech článků</a></li>
+		</ul>
+		<p><strong>Danube: Law and Economics Review</strong> je časopis, který navazuje na tradici původního časopisu pod názvem
+		DUNAJ, jehož zveřejnění bylo násilně přerušeno během druhé světové války.<br />
+		 Časopis je vydáván čtvrtletně pod záštitou Evropské asociace Komenského (<a href="http://www.eaco.eu/">EACO</a>).
+		</p>
+	 </div>	
+		
+</div>	<!-- /left sidebar -->
+
+	{include #content}
+
+	{block scripts}
+	<script src="{$basePath}/js/jquery.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	{/block}
+
+
+<div id="footer">
+<p>2013&nbsp;&copy;&nbsp;<a href="http://www.sovaplus.cz/" title="sovaplus.cz">sovaplus.cz</a></p>
+</div>
+
+</div>	<!-- /wrapper -->
+	
+</body>
+</html>
